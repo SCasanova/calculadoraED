@@ -39,7 +39,7 @@ public class Sintax {
 
     public static boolean esSigno(Character car) { //no incluye el -
         boolean res = false;
-        if (car == '+' || car == '*' || car == '/') {
+        if (car == '+' || car == '*' || car == '/' || car=='^') {
             res = true;
         }
         return res;
