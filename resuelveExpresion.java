@@ -28,7 +28,7 @@ public class resuelveExpresion {
         if(caracter=='5')
             resp=false;
         if(caracter=='6')
-            resp=false;                 //cambiar a swich
+            resp=false;                 
         if(caracter=='7')
             resp=false;
         if(caracter=='8')
@@ -37,8 +37,20 @@ public class resuelveExpresion {
             resp=false;
         if(caracter=='0')
             resp=false;
+        if(caracter==' ')
+            resp=false;
+        if(caracter=='.')
+            resp=false;
     
     return resp;
+    }
+    public static boolean espacio(char carac){
+        boolean resp=false;
+        if(carac==' ')
+            resp=true;
+        
+        
+        return resp;
     }
     
     
@@ -46,32 +58,53 @@ public class resuelveExpresion {
         String expresion, resultado;
         int i;
         int size;
+        
         PilaADT<Double> numeros = new PilaA();
-        double x=0,y; //variables donde guardas valores de la operacion cuando encuentras un operador
+        double x=0,y,aux2, z = 0; //variables donde guardas valores de la operacion cuando encuentras un operador
         boolean errordiv=false; //solo funciona para el caso en el que divides entre cero
-        String aux=""; // ayuda a castear de char a double
+        StringBuilder aux=new StringBuilder(); // ayuda a castear de char a double
         
         expresion =exp ;// aqui va el  resultado de  metodo que regresa la expresionismos postfija bien y revisada
         size = expresion.length();    //aqui guardo el numero de caracteres de la expresión
         
-        if (!expresion.equals("error")){  //supongo que en otro metodo avisa que es error
+       
             i = 0;
             
             while(i < size ){
+                //System.out.println("entre a while");
                 
                 
                 if(!esOperador(expresion.charAt(i))){
+                   // System.out.println("vi que no es operador");
                     
+                    if(!espacio(expresion.charAt(i))){
+                        //System.out.println("vi que no es espacio");
+                        aux.append(expresion.charAt(i));
+                        //System.out.println("revise aux: " + aux);
+                    }
                     
-                    aux=String.valueOf(expresion.charAt(i));//castear a double para poder metera a pila
+                        
+                    else{   
                     
-                    numeros.push(Double.parseDouble(aux));
+                        //System.out.println("entre a push");
+                    String aux3=aux.toString();
+                    
+                    aux2=Double.valueOf(aux3);
+                    
+                    numeros.push(aux2);
+                        //System.out.println("agregue a pila");
+                        //System.out.println("miro pila "+ numeros.peek());
+                        //System.out.println("intento vaciar aux");
+                    aux.setLength(0);
+                        //System.out.println("vacio aux");
+                    }
                     
                 }
                 
                  
                 
                 else{
+                    //System.out.println("intento calcular");
                     
                   
                         switch(expresion.charAt(i)){
@@ -79,9 +112,10 @@ public class resuelveExpresion {
                                 x=numeros.pop();
                                 
                                     y=numeros.pop();
-                                    x=y-x;
+                                    z=y-x;
                                 
-                                numeros.push(x);
+                                
+                                    aux.append(z);
                                 
                                 break;
                             case'+':
@@ -89,23 +123,27 @@ public class resuelveExpresion {
                                 
                                 x = numeros.pop();
                                 
-                                x = x + y;
+                                z = x + y;
                                 
-                                numeros.push(x);
+                                
+                                aux.append(z);
                             break;
                             
                             case'*':
                                 y=numeros.pop();
                                 x=numeros.pop();
-                                x=x*y;
-                                numeros.push(x);
+                                z=x*y;
+                                
+                                aux.append(z);
+                                //System.out.println("calculo y dejo en aux "+ aux);
                             break;
                             
                             case'^':
                                 y=numeros.pop();
                                 x=numeros.pop();
-                                x=Math.pow(x,y);
-                                numeros.push(x);
+                                z=Math.pow(x,y);
+                                
+                                aux.append(z);
                             break;
                                 
                             
@@ -115,8 +153,9 @@ public class resuelveExpresion {
                                 if(y==0)
                                     errordiv=true;
                                 else
-                                    x=x/y;
-                                numeros.push(x);
+                                    z=x/y;
+                                
+                                aux.append(z);
                                 break;    
                         }
                 }
@@ -124,13 +163,11 @@ public class resuelveExpresion {
                        
                         i++;
                     }
-        }
-        else 
-            resultado="error"; //si mandan postfijo mal desde el principio
+        
                 
                 
             
-            if(errordiv==false){// por si hay pedo con la division
+            if(errordiv==false){// por si hay problema  con la division entre 0
                 resultado=String.valueOf(numeros.pop());
             }
             else
@@ -146,12 +183,16 @@ public class resuelveExpresion {
     
     public static void main(String[] args) {
         
-          System.out.println("el resultado es: " + resuelveExpresion("987*+654+*-32*+"));
-          System.out.println("el resultado es: " + resuelveExpresion("97-"));
-          System.out.println("el resultado es: " + resuelveExpresion("245+")); //no toma doble digito
-          System.out.println("el resultado es: " + resuelveExpresion("53^"));
+        System.out.println("el resultado es: " + resuelveExpresion("9.0 8 7 * + 6 5 4 + * - 3 2 * + 2 * "));
+        System.out.println("el resultado es: " + resuelveExpresion("92 45.5 - "));
+        System.out.println("el resultado es: " + resuelveExpresion("24 5.5 + ")); 
+        System.out.println("el resultado es: " + resuelveExpresion("5.7 3 ^ "));
+        System.out.println("el resultado es: " + resuelveExpresion("5.2 3 ^ 1000.0 * "));
+        System.out.println("el resultado es: " + resuelveExpresion("10 30.56 / 8 + "));
+        System.out.println("el resultado es: " + resuelveExpresion("10 0.0 / "));
+        System.out.println("el resultado es: " + resuelveExpresion("5.2 3 ^ 1000.0 * 0 / "));
             
- 
+          //System.out.println("probar el metodo de espacio" + espacio(' '));
       
       
 }
