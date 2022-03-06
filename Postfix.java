@@ -32,8 +32,13 @@ public class Postfix {
         int i = 0;
         while(i < this.expresion.length()){
             char caracterActual = this.expresion.charAt(i);
-            if(Character.isDigit(caracterActual)){
+            if(Character.isDigit(caracterActual) || caracterActual == '.'){
                 postfix.append(caracterActual);
+                if(i < (this.expresion.length() -1) && (Character.isDigit(this.expresion.charAt(i+1)) || this.expresion.charAt(i+1) == '.')){
+                    
+                }else{
+                    postfix.append(' ');
+                }
             } else if (caracterActual == '('){
                 pilaAux.push(caracterActual);
             } else if(caracterActual == '+' || caracterActual == '-' || caracterActual == '*' || caracterActual == '/' || caracterActual == '^'){
@@ -43,12 +48,15 @@ public class Postfix {
                     while(!pilaAux.isEmpty()){
                         try{
                             char elementoPila = (char) pilaAux.peek();
-                            if(elementoPila != '(')
+                            if(elementoPila != '('){
                                 postfix.append(pilaAux.pop());
+                                postfix.append(' '); 
+                            }
                             else
                                 break;
                         } catch(Exception e){
                             postfix.append(pilaAux.pop());
+                            postfix.append(' '); 
                         }
                     }
                     pilaAux.push(caracterActual);
@@ -56,12 +64,15 @@ public class Postfix {
                     while(!pilaAux.isEmpty()){
                         try{
                             char elementoPila = (char) pilaAux.peek();
-                            if(elementoPila != '(')
-                                postfix.append(pilaAux.pop());
+                            if(elementoPila != '('){
+                               postfix.append(pilaAux.pop());
+                               postfix.append(' ');  
+                            }
                             else
                                 break;
                         } catch(Exception e){
                             postfix.append(pilaAux.pop());
+                            postfix.append(' ');  
                         }  
                     }
                      pilaAux.push(caracterActual);
@@ -75,12 +86,15 @@ public class Postfix {
                 while(!pilaAux.isEmpty()){
                         try{
                             char elementoPila = (char) pilaAux.peek();
-                            if(elementoPila != '(')
-                                postfix.append(pilaAux.pop());
+                            if(elementoPila != '('){
+                               postfix.append(pilaAux.pop());
+                               postfix.append(' ');  
+                            }
                             else
                                 break;
                         } catch(Exception e){
                             postfix.append(pilaAux.pop());
+                            postfix.append(' ');
                         }
                             
                     }
@@ -90,6 +104,7 @@ public class Postfix {
         }
         while(!pilaAux.isEmpty()){
              postfix.append(pilaAux.pop());
+             postfix.append(" ");
         }
         return postfix.toString();
     }
