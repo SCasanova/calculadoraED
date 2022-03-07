@@ -6,5 +6,5 @@
 - estaBien
   - malSignos
   - parentesisBal
-- postfix
+- infixToPostfix
 - evalua
