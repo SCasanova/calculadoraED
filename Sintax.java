@@ -11,7 +11,12 @@ public class Sintax {
 
 
 
-//regresa el numero de elementos de una pila dada
+
+ /**
+     * Regresa el numero de elementos de una pila dada.
+     * @param pila - Pila de la cual se quiere conocer su numero de elementos.
+     * @return - int: El número de elementos en la pila.
+     */
     public static <T> int numEle(PilaADT<T> pila) {
         int contador = 0;
         ArrayList<T> apoyo = new ArrayList();
@@ -26,8 +31,14 @@ public class Sintax {
         }
         return contador;
     }
-//regresa true si es un numero del 0 al 9 o un punto decimal; false si no co¿umple con lo anterior
-
+ /**
+     * Determina si un caracter dado es un número o un punto decimal.
+     * @param car - Caracter a evaluar.
+     * @return <ul>
+     * <li>true: si el caracter es un número o un punto decimal.
+     * <li>false: si el caracter no es un número o punto decimal.
+     * </ul>
+     */
     public static boolean esNum(Character car) {
         boolean res = false;
         if (car == '0' || car == '1' || car == '2' || car == '3' || car == '4' || car == '5' || car == '6' || car == '7' || car == '8' || car == '9' || car == '.') {
@@ -35,8 +46,14 @@ public class Sintax {
         }
         return res;
     }
-//regresa true si es un +,*,/
-
+ /**
+     * Determina si un caracter dado es un operador (excepto -).
+     * @param car - Caracter a evaluar.
+     * @return <ul>
+     * <li>true: si el caracter es un operador.
+     * <li>false: si el caracter no es un operador.
+     * </ul>
+     */
     public static boolean esSigno(Character car) { //no incluye el -
         boolean res = false;
         if (car == '+' || car == '*' || car == '/' || car=='^') {
@@ -44,8 +61,14 @@ public class Sintax {
         }
         return res;
     }
-//regresa true si los signos de la expresión estan colocados correctamente; false si hay algun error de sintaxis asociado a los signos
-
+ /**
+     * Determina si una expresión matematica tiene una correcta sintaxis.
+     * @param cad - Expresión a evaluar.
+     * @return <ul>
+     * <li>true: si la expresión tiene sintaxis correcta.
+     * <li>false: si la expresión tiene sintaxis incorrecta.
+     * </ul>
+     */
     public static boolean malSignos(String cad) {
         boolean res = false;
         PilaA<Character> p = new PilaA();
@@ -106,7 +129,14 @@ public class Sintax {
         return res;
     }
 
-    //recibe una cadena. regresa true si los parentesis estan balanceados, false si no
+ /**
+     * Determina si una cadena cuenta con una cantidad y acomodo adecuado de parentesis.
+     * @param cad - Cadena a evaluar
+     * @return <ul>
+     * <li>true: si la expresión tiene parentesis adecuados.
+     * <li>false: si la expresión tiene no parentesis adecuados.
+     * </ul>
+     */
     public static boolean parentesisBal(String cad) {
         PilaA<Character> p = new PilaA();
         int i = 0;
@@ -130,8 +160,15 @@ public class Sintax {
 
         return res;
     }
-
-//utiliza el q checa signos y el q checa parentesis; regresa true si ambos se cumplen; false si al menos uno no se cumple
+   /**
+     * Determina si una si una expresión matematica cuenta con una correcta
+     * sintaxis y un uso adecuado de parentesis.
+     * @param cad - Cadena a evaluar
+     * @return <ul>
+     * <li>true: si la expresión cumple con ambas condiciones.
+     * <li>false: si la expresión no cumple al menos una de las dos condiciones.
+     * </ul>
+     */
     public static boolean estaBien(String cad) {
         boolean res = false;
         Integer n = 0;
