@@ -26,6 +26,10 @@ public class Postfix {
         this.expresion = expresion;
     }
     
+    /**
+     * Convierte una expresión matematica a su equivalente en notacion postfija.
+     * @return String: El equivalente en notación postfija.
+     */
     public String  infixToPostfix(){
         StringBuilder postfix = new StringBuilder();
         PilaA pilaAux = new PilaA();
