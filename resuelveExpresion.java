@@ -44,42 +44,32 @@ public class resuelveExpresion {
     
     return resp;
     }
-    public static boolean espacio(char carac){
-        boolean resp=false;
-        if(carac==' ')
-            resp=true;
-        
-        
-        return resp;
-    }
+   
     
     
     public static String resuelveExpresion(String exp){// recibe cadena de postfijo
         String expresion, resultado;
         int i;
-        int size;
         
         PilaADT<Double> numeros = new PilaA();
         double x=0,y,aux2, z = 0; //variables donde guardas valores de la operacion cuando encuentras un operador
         boolean errordiv=false; //solo funciona para el caso en el que divides entre cero
         StringBuilder aux=new StringBuilder(); // ayuda a castear de char a double
         
-        expresion =exp ;// aqui va el  resultado de  metodo que regresa la expresionismos postfija bien y revisada
-        size = expresion.length();    //aqui guardo el numero de caracteres de la expresión
         
        
             i = 0;
             
-            while(i < size ){
+            while(i < exp.length() ){
                 //System.out.println("entre a while");
                 
                 
-                if(!esOperador(expresion.charAt(i))){
+                if(!esOperador(exp.charAt(i))){
                    // System.out.println("vi que no es operador");
                     
-                    if(!espacio(expresion.charAt(i))){
+                    if(exp.charAt(i)!=' '){
                         //System.out.println("vi que no es espacio");
-                        aux.append(expresion.charAt(i));
+                        aux.append(exp.charAt(i));
                         //System.out.println("revise aux: " + aux);
                     }
                     
@@ -107,7 +97,7 @@ public class resuelveExpresion {
                     //System.out.println("intento calcular");
                     
                   
-                        switch(expresion.charAt(i)){
+                        switch(exp.charAt(i)){
                             case'-':
                                 x=numeros.pop();
                                 
