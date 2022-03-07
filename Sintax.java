@@ -14,7 +14,7 @@ public class Sintax {
 
  /**
      * Regresa el numero de elementos de una pila dada.
-     * @param pila - Pila de la cual se quiere conocer su numero de elementos.
+     * @param pila Pila de la cual se quiere conocer su numero de elementos.
      * @return - int: El número de elementos en la pila.
      */
     public static <T> int numEle(PilaADT<T> pila) {
@@ -33,7 +33,7 @@ public class Sintax {
     }
  /**
      * Determina si un caracter dado es un número o un punto decimal.
-     * @param car - Caracter a evaluar.
+     * @param car Caracter a evaluar.
      * @return <ul>
      * <li>true: si el caracter es un número o un punto decimal.
      * <li>false: si el caracter no es un número o punto decimal.
@@ -48,7 +48,7 @@ public class Sintax {
     }
  /**
      * Determina si un caracter dado es un operador (excepto -).
-     * @param car - Caracter a evaluar.
+     * @param car Caracter a evaluar.
      * @return <ul>
      * <li>true: si el caracter es un operador.
      * <li>false: si el caracter no es un operador.
@@ -63,7 +63,7 @@ public class Sintax {
     }
  /**
      * Determina si una expresión matematica tiene una correcta sintaxis.
-     * @param cad - Expresión a evaluar.
+     * @param cad Expresión a evaluar.
      * @return <ul>
      * <li>true: si la expresión tiene sintaxis correcta.
      * <li>false: si la expresión tiene sintaxis incorrecta.
@@ -131,7 +131,7 @@ public class Sintax {
 
  /**
      * Determina si una cadena cuenta con una cantidad y acomodo adecuado de parentesis.
-     * @param cad - Cadena a evaluar
+     * @param cad Cadena a evaluar
      * @return <ul>
      * <li>true: si la expresión tiene parentesis adecuados.
      * <li>false: si la expresión tiene no parentesis adecuados.
@@ -163,7 +163,7 @@ public class Sintax {
    /**
      * Determina si una si una expresión matematica cuenta con una correcta
      * sintaxis y un uso adecuado de parentesis.
-     * @param cad - Cadena a evaluar
+     * @param cad Cadena a evaluar
      * @return <ul>
      * <li>true: si la expresión cumple con ambas condiciones.
      * <li>false: si la expresión no cumple al menos una de las dos condiciones.
