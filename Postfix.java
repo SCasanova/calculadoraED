@@ -9,36 +9,17 @@ package pilas;
  * @author personal
  */
 public class Postfix {
-    String expresion;
 
-    public Postfix() {
-    }
-
-    public Postfix(String expresion) {
-        this.expresion = expresion;
-    }
-
-    public String getExpresion() {
-        return expresion;
-    }
-
-    public void setExpresion(String expresion) {
-        this.expresion = expresion;
-    }
     
-    /**
-     * Convierte una expresión matematica a su equivalente en notacion postfija.
-     * @return String: El equivalente en notación postfija.
-     */
-    public String  infixToPostfix(){
+    public String  infixToPostfix(String cad){
         StringBuilder postfix = new StringBuilder();
         PilaA pilaAux = new PilaA();
         int i = 0;
-        while(i < this.expresion.length()){
-            char caracterActual = this.expresion.charAt(i);
+        while(i < cad.length()){
+            char caracterActual = cad.charAt(i);
             if(Character.isDigit(caracterActual) || caracterActual == '.'){
                 postfix.append(caracterActual);
-                if(i < (this.expresion.length() -1) && (Character.isDigit(this.expresion.charAt(i+1)) || this.expresion.charAt(i+1) == '.')){
+                if(i < (cad.length() -1) && (Character.isDigit(cad.charAt(i+1)) || cad.charAt(i+1) == '.')){
                     
                 }else{
                     postfix.append(' ');
