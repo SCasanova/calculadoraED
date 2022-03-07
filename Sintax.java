@@ -13,8 +13,8 @@ public class Sintax {
 
 
  /**
-     * Regresa el numero de elementos de una pila dada.
-     * @param pila Pila de la cual se quiere conocer su numero de elementos.
+     * Regresa el número de elementos de una pila dada.
+     * @param pila Pila de la cual se quiere conocer su número de elementos.
      * @return - int: El número de elementos en la pila.
      */
     public static <T> int numEle(PilaADT<T> pila) {
@@ -31,14 +31,15 @@ public class Sintax {
         }
         return contador;
     }
- /**
-     * Determina si un caracter dado es un número o un punto decimal.
+/**
+     * Determina si un carácter dado es un número o un punto decimal.
      * @param car Caracter a evaluar.
      * @return <ul>
-     * <li>true: si el caracter es un número o un punto decimal.
-     * <li>false: si el caracter no es un número o punto decimal.
+     * <li>true: si el carácter es un número o un punto decimal.
+     * <li>false: si el carácter no es un número o punto decimal.
      * </ul>
      */
+
     public static boolean esNum(Character car) {
         boolean res = false;
         if (car == '0' || car == '1' || car == '2' || car == '3' || car == '4' || car == '5' || car == '6' || car == '7' || car == '8' || car == '9' || car == '.') {
@@ -47,11 +48,11 @@ public class Sintax {
         return res;
     }
  /**
-     * Determina si un caracter dado es un operador (excepto -).
+     * Determina si un carácter dado es un operador (excepto -).
      * @param car Caracter a evaluar.
      * @return <ul>
-     * <li>true: si el caracter es un operador.
-     * <li>false: si el caracter no es un operador.
+     * <li>true: si el carácter es un operador.
+     * <li>false: si el carácter no es un operador.
      * </ul>
      */
     public static boolean esSigno(Character car) { //no incluye el -
@@ -61,8 +62,8 @@ public class Sintax {
         }
         return res;
     }
- /**
-     * Determina si una expresión matematica tiene una correcta sintaxis.
+/**
+     * Determina si una expresión matemática tiene una correcta sintaxis.
      * @param cad Expresión a evaluar.
      * @return <ul>
      * <li>true: si la expresión tiene sintaxis correcta.
@@ -130,11 +131,11 @@ public class Sintax {
     }
 
  /**
-     * Determina si una cadena cuenta con una cantidad y acomodo adecuado de parentesis.
+     * Determina si una cadena cuenta con una cantidad y acomodo adecuado de paréntesis.
      * @param cad Cadena a evaluar
      * @return <ul>
-     * <li>true: si la expresión tiene parentesis adecuados.
-     * <li>false: si la expresión tiene no parentesis adecuados.
+     * <li>true: si la expresión tiene paréntesis adecuados.
+     * <li>false: si la expresión tiene no paréntesis adecuados.
      * </ul>
      */
     public static boolean parentesisBal(String cad) {
@@ -160,9 +161,9 @@ public class Sintax {
 
         return res;
     }
-   /**
-     * Determina si una si una expresión matematica cuenta con una correcta
-     * sintaxis y un uso adecuado de parentesis.
+     /**
+     * Determina si una si una expresión matemática cuenta con una correcta
+     * sintaxis y un uso adecuado de paréntesis.
      * @param cad Cadena a evaluar
      * @return <ul>
      * <li>true: si la expresión cumple con ambas condiciones.
